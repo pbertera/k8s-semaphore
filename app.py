@@ -44,7 +44,7 @@ class validate:
                         "allowed": False,
                         "status": {
                             "code": 403,
-                            "message": "Resource %s (kind: %s, version: %s, group: %s) is annotated with %s, cannot be removed" % (resource_name, resource_version, resource_group, red_light_annotation)
+                            "message": "Resource %s (kind: %s, version: %s, group: %s) is annotated with %s, cannot be removed" % (resource_name, resource_version, resource_group, semaphore_annotation)
                             }
                         }
                     } 
