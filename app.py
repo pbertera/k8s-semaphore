@@ -17,7 +17,7 @@ else:
     debug = False
 
 if 'SEMAPHORE_ANNOTATION' in os.environ:
-    semaphore_annotation = os.environ['VALIDATION_ANNOTATION']
+    semaphore_annotation = os.environ['SEMAPHORE_ANNOTATION']
 else:
     semaphore_annotation = 'bertera.it/k8s-semaphore'
 
@@ -35,7 +35,7 @@ class validate:
         resource_group = request['request']['requestKind']['group']
         
         if semaphore_annotation in annotations:
-            if annotation[semaphore_annotation] == "red":
+            if annotations[semaphore_annotation] == "red":
                 response = {
                     "apiVersion": "admission.k8s.io/v1",
                     "kind": "AdmissionReview",
