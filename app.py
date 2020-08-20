@@ -50,7 +50,7 @@ class validate:
                     } 
                 if debug:
                     print("/validate RES: %s" % response)
-                return json.dumps(response)
+                raise web.forbidden(json.dumps(response))
         
         response = {
             "apiVersion": "admission.k8s.io/v1",
