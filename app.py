@@ -15,14 +15,11 @@ if 'DEBUG' in os.environ.keys():
 else:
     web.config.debug = False
     debug = False
-if 'VALIDATION_ANNOTATION' in os.environ:
-    validation_annotation = os.environ['VALIDATION_ANNOTATION']
+
+if 'SEMAPHORE_ANNOTATION' in os.environ:
+    semaphore_annotation = os.environ['VALIDATION_ANNOTATION']
 else:
-    validation_annotation = 'bertera.it/k8s-semaphore'
-if 'RED_LIGHT__ANNOTATION' in os.environ:
-    red_light_annotation = os.environ['RED_LIGHT_ANNOTATION']
-else:
-    red_light_annotation = 'bertera.it/k8s-semaphore/red'
+    semaphore_annotation = 'bertera.it/k8s-semaphore'
 
 class validate:
     def POST(self):
@@ -37,10 +34,9 @@ class validate:
         resource_version = request['request']['requestKind']['version']
         resource_group = request['request']['requestKind']['group']
         
-        if validation_annotation in annotations:
-            if red_light_annotation in annotations:
+        if semaphore_annotation in annotations:
+            if annotation[semaphore_annotation] == "red":
                 response = {
-
                     "apiVersion": "admission.k8s.io/v1",
                     "kind": "AdmissionReview",
                     "response": {
