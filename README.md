@@ -7,6 +7,8 @@ The validating webhook is deployed as a pod in the cluster, the webhook supports
 - `DEBUG`: if `yes` the debug is enabled, pod logs are more verbose
 - `SEMAPHORE_ANNOTATION`: the annotation name to be used as a semaphore (default: `bertera.it/k8s-semaphore`)
 - `SEMAPHORE_RED`: the annotation value to be used as a "red light" (default" `red`)
+- `TLS_CERT_PATH`: x509 certificate to use for the webhook
+- `TLS_KEY_PATH`: certificate key of the webhook
 
 ## Usage example
 
