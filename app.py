@@ -40,7 +40,7 @@ class validate:
         resource_group = request['request']['requestKind']['group']
         
         if semaphore_annotation in annotations:
-            if annotations[semaphore_annotation] == red:
+            if annotations[semaphore_annotation] == semaphore_red:
                 response = {
                     "apiVersion": "admission.k8s.io/v1",
                     "kind": "AdmissionReview",
